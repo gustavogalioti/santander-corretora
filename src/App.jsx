@@ -561,9 +561,9 @@ function Dashboard({ user, onLogout }) {
   useEffect(() => { loadData(); }, [loadData]);
 
   const meses = [...new Set(data.map(r => r.mes))].filter(Boolean).sort().reverse();
-  const coords = ["Todos", ...new Set(data.map(r => r.coordenador)).filter(Boolean)];
-  const tls = ["Todos", ...new Set(data.filter(r => filterCoord === "Todos" || r.coordenador === filterCoord).map(r => r.team_leader)).filter(Boolean)];
-  const assessores = ["Todos", ...new Set(data.filter(r => filterTL === "Todos" || r.team_leader === filterTL).map(r => r.assessor)).filter(Boolean)];
+  const coords = ["Todos", ...[...new Set(data.map(r => r.coordenador))].filter(Boolean)];
+  const tls = ["Todos", ...[...new Set(data.filter(r => filterCoord === "Todos" || r.coordenador === filterCoord).map(r => r.team_leader))].filter(Boolean)];
+  const assessores = ["Todos", ...[...new Set(data.filter(r => filterTL === "Todos" || r.team_leader === filterTL).map(r => r.assessor))].filter(Boolean)];
 
   const filtered = data.filter(r => {
     if (filterMes !== "Todos" && r.mes !== filterMes) return false;
